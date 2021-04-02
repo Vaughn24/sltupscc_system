@@ -40,6 +40,22 @@ class DbService {
             console.log(error);
         }
     }
+
+    async countAllMembers(tbl_name) {
+        try {
+            const response = await new Promise((resolve, reject) => {
+                const query = "SELECT COUNT(member_id) AS memberNo FROM tbl_members;";
+                connection.query(query, (err, results) => {
+                    if (err) reject(new Error(err.message));
+                    resolve(results);
+                })
+            });
+
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    }
 //////////////////////////////////////// BACKUP ///////////////////////////////////
     // async insertNewName(name) {
     //     try {
@@ -135,6 +151,9 @@ class DbService {
             console.log(error);
         }
     }
+
+
+
 }
 
 module.exports = DbService;

@@ -96,9 +96,21 @@ document.addEventListener('DOMContentLoaded', function () {
   fetch('http://localhost:5000/getAllloan')
   .then(response => response.json())
   .then(data => loadHTMLTable3(data['data']));
+
+  fetch('http://localhost:5000/countAllmembers')
+  .then(response => response.json())
+  .then(data => loadHTMLTable4(data));
+
 });
 
+function loadHTMLTable4(data) {
+  const memberNo = document.querySelector('#member-no');
 
+  memberNo.innerHTML = data.data[0].memberNo;
+
+  console.log(data)
+
+}
 
 //// TABLE MEMBERS
 function loadHTMLTable(data) {
@@ -198,10 +210,12 @@ function loadHTMLTable3(data) {
 async function get_members(){
   const result1 = await fetch('http://localhost:5000/getAllmembers',{method:'GET'}).then(res => res.json())
   const result2 = await fetch('http://localhost:5000/getAllofficers',{method:'GET'}).then(res => res.json())
+  const result3 = await fetch('http://localhost:5000/countallmembers',{method:'GET'}).then(res => res.json())
   // let sample = result.data.map(res => res.member_fname)
 
 console.log(result1);
 console.log(result2);
+console.log(result3);
 }
 get_members();
 

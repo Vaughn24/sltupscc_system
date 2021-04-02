@@ -77,6 +77,19 @@ app.get('/getAllloan', (request, response) => {
 
 })
 
+app.get('/countAllmembers', (request, response) => {
+    const db = dbService.getDbServiceInstance();
+
+    const result = db.countAllMembers("tbl_members");
+    
+    result
+    .then(data => {
+        //console.log(data)
+        response.json({data : data})})
+    .catch(err => console.log(err));
+
+})
+
 
 
 
