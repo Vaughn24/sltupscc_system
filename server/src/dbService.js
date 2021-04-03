@@ -89,19 +89,61 @@ class DbService {
                 })
             });
             return {
-                member_id : member_id,
-                officer_type : officer_type,
+                // member_id : member_id,
+                // officer_type : officer_type,
             };
         } catch (error) {
             console.log(error);
         }
     }
 
-    async deleteRowById(id) {
+    async insertmember({member_fname,member_lname,member_birthdate,member_occupation,member_education,member_email,member_age,member_sex,member_status,member_school,member_shares,loan_status,subs_id}) {
+        try {
+            const dateAdded = new Date();
+            const insertId = await new Promise((resolve, reject) => {
+                const query = "INSERT INTO tbl_members (member_fname,member_lname,member_birthdate,member_occupation,member_education,member_email,member_age,member_sex,member_status,member_school,member_shares,loan_status,subs_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?) ;";
+
+                connection.query(query, [member_fname,member_lname,member_birthdate,member_occupation,member_education,member_email,member_age,member_sex,member_status,member_school,member_shares,loan_status,subs_id] , (err, result) => {
+                    if (err) reject(new Error(err.message));
+                    resolve(result);
+                })
+            });
+            return {
+                // member_id : member_id,
+                // officer_type : officer_type,
+            };
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async insertloan({member_id,loan_principalamount,loan_interestrate,loan_term,loan_status,loan_eligibility}) {
+        try {
+            const dateAdded = new Date();
+            const insertId = await new Promise((resolve, reject) => {
+                const query = "INSERT INTO tbl_loan (member_id,loan_principalamount,loan_interestrate,loan_term,loan_status,loan_eligibility) VALUES (?,?,?,?,?,?) ;";
+
+                connection.query(query, [member_id,loan_principalamount,loan_interestrate,loan_term,loan_status,loan_eligibility] , (err, result) => {
+                    if (err) reject(new Error(err.message));
+                    resolve(result);
+                })
+            });
+            return {
+                // member_id : member_id,
+                // officer_type : officer_type,
+            };
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
+    async deleteRowByofficerId(id) {
         try {
             id = parseInt(id, 10); 
             const response = await new Promise((resolve, reject) => {
-                const query = "DELETE FROM tbl_officers WHERE member_id = ?";
+                const query = "DELETE FROM tbl_officers WHERE member_id = ?;";
     
                 connection.query(query, [id] , (err) => {
                     if (err) reject(new Error(err.message));
@@ -115,6 +157,44 @@ class DbService {
             return false;
         }
     }
+
+    async deleteRowBymemberId(id) {
+        try {
+            id = parseInt(id, 10); 
+            const response = await new Promise((resolve, reject) => {
+                const query = "DELETE FROM tbl_members WHERE member_id = ?;";
+    
+                connection.query(query, [id] , (err) => {
+                    if (err) reject(new Error(err.message));
+                    resolve();
+                })
+            });
+    
+            return response === 1 ? true : false;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    }
+    async deleteRowByloanId(id) {
+        try {
+            id = parseInt(id, 10); 
+            const response = await new Promise((resolve, reject) => {
+                const query = "DELETE FROM tbl_loan WHERE member_id = ?;";
+    
+                connection.query(query, [id] , (err) => {
+                    if (err) reject(new Error(err.message));
+                    resolve();
+                })
+            });
+    
+            return response === 1 ? true : false;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    }
+
 
     async updateNameById(id, name) {
         try {

@@ -26,27 +26,27 @@
         <div class="form">
            <div class="inputfield">
               <label>Member id</label>
-              <input type="text" class="input">
+              <input type="text" class="input" id="member_id">
            </div>  
             <div class="inputfield">
               <label>Loan principal amount</label>
-              <input type="text" class="input">
+              <input type="text" class="input" id="loan_principalamount">
            </div>  
            <div class="inputfield">
             <label>Loan interest rate</label>
-            <input type="text" class="input">
+            <input type="text" class="input" id="loan_interestrate">
          </div>   
          <div class="inputfield">
             <label>loan term</label>
-            <input type="text" class="input">
+            <input type="text" class="input" id="loan_term">
          </div>  
          <div class="inputfield">
             <label>loan status</label>
-            <input type="text" class="input">
+            <input type="text" class="input" id="loan_status">
          </div>  
          <div class="inputfield">
             <label>loan eligibility</label>
-            <input type="text" class="input">
+            <input type="text" class="input" id="loan_elgibility">
          </div>  
           <div class="inputfield terms">
               <label class="check">
@@ -56,7 +56,7 @@
               <p>Agreed to terms and conditions</p>
            </div> 
           <div class="inputfield">
-            <input type="submit" value="Submit" class="btn">
+            <input value="Submit" class="btn" onclick="handleSubmitNewloan()" type="button" >
           </div>
         </div>
     </div>

@@ -24,9 +24,9 @@ app.use(express.urlencoded({ extended : false }));
 
 
 // create for officer
-app.post('/insert', (request, response) => {
+app.post('/insertofficer', (request, response) => {
     const { member_id, officer_position, officer_task, officer_type} = request.body;
-    console.log(member_id, officer_position, officer_task, officer_type)
+    // console.log(member_id, officer_position, officer_task, officer_type)
     const db = dbService.getDbServiceInstance();
     
     const result = db.insertofficer({member_id,officer_type,officer_position,officer_task});
@@ -36,6 +36,29 @@ app.post('/insert', (request, response) => {
     .catch(err => console.log(err));
 });
 
+app.post('/insertmember', (request, response) => {
+    const {member_fname,member_lname,member_birthdate,member_occupation,member_education,member_email,member_age,member_sex,member_status,member_school,member_shares,loan_status,subs_id} = request.body;
+    // console.log(member_id, officer_position, officer_task, officer_type)
+    const db = dbService.getDbServiceInstance();
+    
+    const result = db.insertmember({member_fname,member_lname,member_birthdate,member_occupation,member_education,member_email,member_age,member_sex,member_status,member_school,member_shares,loan_status,subs_id});
+
+    result
+    .then(data => response.json({ data: data}))
+    .catch(err => console.log(err));
+});
+
+app.post('/insertloan', (request, response) => {
+    const {member_id,loan_principalamount,loan_interestrate,loan_term,loan_status,loan_eligibility} = request.body;
+    // console.log(member_id, officer_position, officer_task, officer_type)
+    const db = dbService.getDbServiceInstance();
+    
+    const result = db.insertloan({member_id,loan_principalamount,loan_interestrate,loan_term,loan_status,loan_eligibility});
+
+    result
+    .then(data => response.json({ data: data}))
+    .catch(err => console.log(err));
+});
 
 //////////////////////////////READ//////////////
 // read for Members
@@ -109,16 +132,39 @@ app.patch('/update', (request, response) => {
 });
 
 // delete
-app.delete('/delete/:id', (request, response) => {
+app.delete('/delete/officer/:id', (request, response) => {
     const { id } = request.params;
     const db = dbService.getDbServiceInstance();
 
-    const result = db.deleteRowById(id);
+    const result = db.deleteRowByofficerId(id);
     
     result
     .then(data => response.json({success : data}))
     .catch(err => console.log(err));
 });
+
+app.delete('/delete/member/:id', (request, response) => {
+    const { id } = request.params;
+    const db = dbService.getDbServiceInstance();
+
+    const result = db.deleteRowBymemberId(id);
+    
+    result
+    .then(data => response.json({success : data}))
+    .catch(err => console.log(err));
+});
+
+app.delete('/delete/loan/:id', (request, response) => {
+    const { id } = request.params;
+    const db = dbService.getDbServiceInstance();
+
+    const result = db.deleteRowByloanId(id);
+    
+    result
+    .then(data => response.json({success : data}))
+    .catch(err => console.log(err));
+});
+
 
 app.get('/search/:name', (request, response) => {
     const { name } = request.params;
