@@ -243,7 +243,7 @@ function loadHTMLTable(data) {
       tableHtml += `<td>${subs_id}</td>`;
 
       tableHtml += `<td><button class="delete-row-btn" data-id=${member_id} onclick="handleDeleteMember(${member_id})">Delete</td>`;
-      tableHtml += `<td><button class="edit-row-btn" data-id=${member_id}>Edit</td>`;
+      // tableHtml += `<td><button class="edit-row-btn" data-id=${member_id}>Edit</td>`;
       tableHtml += "</tr>";
   });
 
@@ -271,7 +271,7 @@ function loadHTMLTable2(data) {
       tableHtml += `<td>${officer_task}</td>`;
 
       tableHtml += `<td><button class="delete-row-btn" data-id=${member_id} onclick="handleDeleteOfficer(${member_id})">Delete</td>`;
-      tableHtml += `<td><button class="edit-row-btn" data-id=${member_id}>Edit</td>`;
+      // tableHtml += `<td><button class="edit-row-btn" data-id=${member_id}>Edit</td>`;
       tableHtml += "</tr>";
   });
 
@@ -300,7 +300,7 @@ function loadHTMLTable3(data) {
       tableHtml += `<td>${loan_eligiblity}</td>`;
 
       tableHtml += `<td><button class="delete-row-btn" data-id=${member_id} onclick="handleDeleteLoan(${member_id})">Delete</td>`;
-      tableHtml += `<td><button class="edit-row-btn" data-id=${member_id}>Edit</td>`;
+      // tableHtml += `<td><button class="edit-row-btn" data-id=${member_id}>Edit</td>`;
       tableHtml += "</tr>";
   });
 
