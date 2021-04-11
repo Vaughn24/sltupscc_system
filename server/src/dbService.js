@@ -196,13 +196,51 @@ class DbService {
     }
 
 
-    async updateNameById(id, name) {
+    async updateofficerbyid(member_id,officer_type,officer_position,officer_task) {
         try {
-            id = parseInt(id, 10); 
+            let id = parseInt(member_id, 10); 
             const response = await new Promise((resolve, reject) => {
-                const query = "UPDATE names SET name = ? WHERE id = ?";
+                const query = "UPDATE tbl_officers SET officer_type = ?,officer_position = ?,officer_task=? WHERE member_id = ?";
     
-                connection.query(query, [name, id] , (err, result) => {
+                connection.query(query, [officer_type,officer_position,officer_task,id] , (err, result) => {
+                    if (err) reject(new Error(err.message));
+                    resolve(result.affectedRows);
+                })
+            });
+    
+            return response === 1 ? true : false;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    }
+
+    async updatememberbyid(member_id,member_fname,member_lname,member_birthdate,member_occupation,member_education,member_email,member_age,member_sex,member_status,member_school,member_shares,loan_status,subs_id) {
+        try {
+            let id = parseInt(member_id, 10); 
+            const response = await new Promise((resolve, reject) => {
+                const query = "UPDATE tbl_members SET member_fname = ?,member_lname = ?,member_birthdate = ?,member_occupation = ?,member_education = ?,member_email = ?,member_age = ?,member_sex = ?,member_status = ?,member_school = ?,member_shares = ?,loan_status = ?,subs_id = ? WHERE member_id = ?";
+    
+                connection.query(query, [member_fname,member_lname,member_birthdate,member_occupation,member_education,member_email,member_age,member_sex,member_status,member_school,member_shares,loan_status,subs_id,id] , (err, result) => {
+                    if (err) reject(new Error(err.message));
+                    resolve(result.affectedRows);
+                })
+            });
+    
+            return response === 1 ? true : false;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    }
+
+    async updateloanbyid(member_id,loan_principalamount,loan_interestrate,loan_term,loan_status) {
+        try {
+            let id = parseInt(member_id, 10); 
+            const response = await new Promise((resolve, reject) => {
+                const query = "UPDATE tbl_loan SET loan_principalamount = ?,loan_interestrate = ?,loan_term = ?,loan_status = ? WHERE member_id = ?";
+    
+                connection.query(query, [loan_principalamount,loan_interestrate,loan_term,loan_status,id] , (err, result) => {
                     if (err) reject(new Error(err.message));
                     resolve(result.affectedRows);
                 })

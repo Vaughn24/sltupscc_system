@@ -120,12 +120,28 @@ app.get('/countAllmembers', (request, response) => {
 
 
 // update
-app.patch('/update', (request, response) => {
-    const { id, name } = request.body;
+app.put('/update/officer', (request, response) => {
+    const { member_id,officer_type,officer_position,officer_task } = request.body;
     const db = dbService.getDbServiceInstance();
+    const result = db.updateofficerbyid(member_id,officer_type,officer_position,officer_task);
+    result
+    .then(data => response.json({success : data}))
+    .catch(err => console.log(err));
+});
 
-    const result = db.updateNameById(id, name);
-    
+app.put('/update/member', (request, response) => {
+    const { member_id,member_fname,member_lname,member_birthdate,member_occupation,member_education,member_email,member_age,member_sex,member_status,member_school,member_shares,loan_status,subs_id } = request.body;
+    const db = dbService.getDbServiceInstance();
+    const result = db.updatememberbyid(member_id,member_fname,member_lname,member_birthdate,member_occupation,member_education,member_email,member_age,member_sex,member_status,member_school,member_shares,loan_status,subs_id);
+    result
+    .then(data => response.json({success : data}))
+    .catch(err => console.log(err));
+});
+
+app.put('/update/loan', (request, response) => {
+    const { member_id,loan_principalamount,loan_interestrate,loan_term,loan_status } = request.body;
+    const db = dbService.getDbServiceInstance();
+    const result = db.updateloanbyid(member_id,loan_principalamount,loan_interestrate,loan_term,loan_status);
     result
     .then(data => response.json({success : data}))
     .catch(err => console.log(err));

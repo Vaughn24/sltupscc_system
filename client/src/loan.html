@@ -21,7 +21,7 @@
 
       <div class="form-wrapper">
         <div class="title">
-          Registration Form
+          Loan Registration Form
         </div>
         <div class="form">
            <div class="inputfield">
@@ -44,10 +44,6 @@
             <label>loan status</label>
             <input type="text" class="input" id="loan_status">
          </div>  
-         <div class="inputfield">
-            <label>loan eligibility</label>
-            <input type="text" class="input" id="loan_elgibility">
-         </div>  
           <div class="inputfield terms">
               <label class="check">
                 <input type="checkbox">
@@ -65,6 +61,50 @@
 
 
 
+    <div class="modal-container3" onclick="showRegistrationModal3()" >
+    </div>
+
+    <div class="modal3"><i class="fa fa-times" aria-hidden="true" onclick="showRegistrationModal3()"></i>
+
+      <div class="form-wrapper">
+        <div class="title">
+          Loan Edit Form
+        </div>
+        <div class="form">
+           <div class="inputfield">
+              <label>Member id</label>
+              <input type="text" class="input" id="member_id-u">
+           </div>  
+            <div class="inputfield">
+              <label>Loan principal amount</label>
+              <input type="text" class="input" id="loan_principalamount-u">
+           </div>  
+           <div class="inputfield">
+            <label>Loan interest rate</label>
+            <input type="text" class="input" id="loan_interestrate-u">
+         </div>   
+         <div class="inputfield">
+            <label>loan term</label>
+            <input type="text" class="input" id="loan_term-u">
+         </div>  
+         <div class="inputfield">
+            <label>loan status</label>
+            <input type="text" class="input" id="loan_status-u">
+         </div>  
+          <div class="inputfield terms">
+              <label class="check">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+              <p>Agreed to terms and conditions</p>
+           </div> 
+          <div class="inputfield">
+            <input value="Submit" class="btn" onclick="handleUpdateLoan()" type="button" >
+          </div>
+        </div>
+    </div>
+    
+    </div>
 
 
     <div class="container">
@@ -123,7 +163,7 @@
           <!-- CHARTS STARTS HERE -->
           <div class="sample">
 
-            <button id="add-name-btn" onclick="showRegistrationModal()">Add Loan</button>
+            <button id="add-name-btn" onclick="showRegistrationModal()" class="button4">Add Loan</button>
     
             <br><br><br>
             <!-- <div>
@@ -142,7 +182,7 @@
                   <th>Loan Interest Rate</th>
                   <th>Loan Term</th>
                   <th>Loan Status</th>
-                  <th>Loan Eligiblity</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>

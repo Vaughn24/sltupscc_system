@@ -14,8 +14,6 @@
     <title>SLTUPSCC SYSTEM</title>
   </head>
   <body id="body">
-
-
     <div class="modal-container" onclick="showRegistrationModal()" >
     </div>
 
@@ -105,7 +103,102 @@
     </div>
     
     </div>
+
+
+
+    <div class="modal-container4" onclick="showRegistrationModal4()" >
+    </div>
+
+    <div class="modal4"><i class="fa fa-times" aria-hidden="true" onclick="showRegistrationModal4()"></i>
+
+      <div class="form-wrapper">
+        <div class="title">
+          Member Edit Form
+        </div>
+        <div class="form">
+          <div class="inputfield">
+            <label>Member id</label>
+            <input type="text" class="input" id="member_id-u">
+         </div>  
+           <div class="inputfield">
+              <label>First Name</label>
+              <input type="text" class="input" id="member_fname-u">
+           </div>  
+            <div class="inputfield">
+              <label>Last Name</label>
+              <input type="text" class="input" id="member_lname-u">
+           </div>  
+           <div class="inputfield">
+            <label for="birthday">Birthday:</label>
+            <input type="date" class="input" id="member_birthdate-u">
+         </div>  
+         <div class="inputfield">
+            <label>Occupation</label>
+            <input type="text" class="input" id="member_occupation-u">
+         </div>  
+         <div class="inputfield">
+            <label>Educational Attainment</label>
+            <input type="text" class="input"id="member_education-u" >
+         </div>  
+         <div class="inputfield">
+          <label>Email</label>
+          <input type="text" class="input" id="member_email-u">
+       </div>
+       <div class="inputfield">
+        <label>Age</label>
+        <input type="text" class="input" id="member_age-u">
+     </div> 
+     <div class="inputfield">
+      <label>Sex</label>
+      <div class="custom_select">
+        <select id="member_sex-u">
+          <option value="">Select</option>
+          <option value="m">Male</option>
+          <option value="f">Female</option>
+        </select >
+      </div>
+    </div> 
+      <div class="inputfield">
+        <label>Status</label>
+        <input type="text" class="input" id="member_status-u">
+     </div> 
+
+         <div class="inputfield">
+            <label>School Graduated</label>
+            <input type="text" class="input" id="member_school-u">
+         </div>  
+         <div class="inputfield">
+          <label>Shares</label>
+          <input type="text" class="input" id="member_shares-u">
+       </div>  
+       <div class="inputfield">
+        <label>Loan Status</label>
+        <input type="text" class="input" id="loan_status-u">
+     </div>  
+     <div class="inputfield">
+      <label>Subscription plan</label>
+      <div class="custom_select">
+        <select id="subs_id-u">
+          <option value="">Select</option>
+          <option value=1>ASSOCIATE</option>
+          <option value=2>REGULAR</option>
+        </select >
+      </div>
+    </div> 
+          <div class="inputfield terms">
+              <label class="check">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+              <p>Agreed to terms and conditions</p>
+           </div> 
+          <div class="inputfield">
+            <input value="Submit" class="btn" onclick="handleUpdateMember()" type="button" >
+          </div>
+        </div>
+    </div>
     
+    </div>
 
 
 
@@ -167,7 +260,7 @@
           <!-- ADD MEMBERS STARTS HERE -->
           <div class="sample">
 
-            <button id="add-name-btn" onclick="showRegistrationModal()">Add Member</button>
+            <button id="add-name-btn" onclick="showRegistrationModal()" class="button4">Add Member</button>
     
             <br><br><br>
 
@@ -191,6 +284,7 @@
                   <th>Shares</th>
                   <th>Status</th>
                   <th>Subcription ID</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
